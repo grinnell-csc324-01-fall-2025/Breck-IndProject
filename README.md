@@ -4,9 +4,12 @@ About: This project is about creating a neural network that will be trained on p
         The end goal being a quickly trained AI that has the ability to understand and play chess at a decently high level.
         It is not expected to be the best nor beat the best opponents, but instead hold its own and beat average to higher skilled players.
         I will be importing chess game files and then creating functions using python that can turn the data into understandable matrix's for the neural network to train on.
+        The project will be done with python in VSCode, it will only take 1-2 files in total as much can be done in a singular file. 
 
-        The code will exist in VSCode and is coded entirely on the language python.
+Tools: The tools needed are VSCode, this is because all of the libraries and inputs will be done inside the VSCode terminal and exist within the extensions of VSCode.
+        The tools used are tensorflow, chess, torch, numpy, and tqdm. These are all libraries that can be accessed within python in VSCode.
 
-Tools:
-
-Build Instructions:
+Build Instructions: In order to build this project you will have to open VSCode and name a file and "name".py. This will create a python file, from here you have to open the VSCode terminal and then open command prompt.
+                        From here you need to install the needed libraries using the command ' pip install torch ' as an example of one of the needed libraries.
+                        Now that you have done that, you have the necessary environment needed to run this program. 
+                        The data you can get from lichess.com or any other .pgn file that holds chess games as its data.
