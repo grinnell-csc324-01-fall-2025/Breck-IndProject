@@ -10,6 +10,8 @@ Tools: The tools needed are VSCode, this is because all of the libraries and inp
         The tools used are tensorflow, chess, torch, numpy, and tqdm. These are all libraries that can be accessed within python in VSCode.
 
 Build Instructions: In order to build this project you will have to open VSCode and name a file and "name".py. This will create a python file, from here you have to open the VSCode terminal and then open command prompt.
+                        Then you have to run the command ' python -m venv "name of virtual environment" ' which will create a new file that is your vitual environment.
+                        Next, you have to activate the venv by running the command ' "name of venv" .\venv_name\Scripts\activate '
                         From here you need to install the needed libraries using the command ' pip install torch ' as an example of one of the needed libraries.
                         Now that you have done that, you have the necessary environment needed to run this program. 
                         The data you can get from lichess.com or any other .pgn file that holds chess games as its data.
