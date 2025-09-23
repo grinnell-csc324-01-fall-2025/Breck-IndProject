@@ -1,12 +1,14 @@
-# Necessary libraries for image and data translation and manipulation
-import torch
-from torch.utils.data import Dataset, DataLoader
-import pandas as pd
-import os
-from PIL import Image
+from torch.utils.data import Dataset
 
 
+class ChessDataSet(Dataset):
 
-# File that will create a database for the game's data to be input into
-# Then it will be manipulated and turned into understandable data for pytorch
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
 
+  def __len__(self):
+    return len(self.x)
+  
+  def __getitem__(self, idx):
+    return self.x[idx], self.y[idx]
