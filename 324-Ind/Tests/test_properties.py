@@ -1,5 +1,5 @@
 from hypothesis import given, strategies as st, settings
-from Game.chess_engine import ChessEngine
+from 324-Ind.Game.chess_engine import ChessEngine
 
 @given(
     st.integers(min_value=0, max_value=7),
@@ -21,4 +21,5 @@ def test_move_makes_board_change():
     initial_state = str(engine.board)
     engine.make_move("e2", "e4")
     new_state = str(engine.board)
+
     assert initial_state != new_state
