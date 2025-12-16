@@ -1,6 +1,6 @@
 # tests/test_board.py
 import pytest
-from Game.chess_engine import ChessEngine
+from 324-Ind.Game.chess_engine import ChessEngine
 
 def test_board_creation():
     engine = ChessEngine()
@@ -24,4 +24,5 @@ def test_turn_switching():
     engine = ChessEngine()
     assert engine.current_turn == 'w'
     engine.make_move("e2", "e4")
+
     assert engine.current_turn == 'b'
