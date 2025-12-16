@@ -25,6 +25,7 @@ jobs:
     - name: Run tests with coverage
       run: |
         cd ..
+        cd..
         cd Python
         cd Chess_ind
         python -m pytest Tests/ --cov=Game --cov-report=xml --cov-report=term
