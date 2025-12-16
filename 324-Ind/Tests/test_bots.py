@@ -1,5 +1,5 @@
-from Game.bots import RandomBot, CaptureBot, CenterControlBot
-from Game.chess_engine import ChessEngine
+from 324-Ind.Game.bots import RandomBot, CaptureBot, CenterControlBot
+from 324-Ind.Game.chess_engine import ChessEngine
 
 def test_random_bot():
     engine = ChessEngine()
@@ -103,4 +103,5 @@ def test_bot_colors_correct():
         from_sq, _ = move
         coords = engine.square_to_coords(from_sq)
         piece = engine.board[coords[0]][coords[1]]
+
         assert piece[0] == 'b', f"Black bot tried to move white piece {piece}"
