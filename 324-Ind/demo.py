@@ -1,6 +1,6 @@
 """Demo of Chess Engine with Three Bots"""
-from Game.game import ChessGame
-from Game.bots import RandomBot, CaptureBot, CenterControlBot
+from 324-Ind.Game.game import ChessGame
+from 324-Ind.Game.bots import RandomBot, CaptureBot, CenterControlBot
 
 print("=== Chess Engine with Three Bots ===")
 print("Testing different bot strategies against each other")
@@ -25,4 +25,5 @@ game3.run(max_turns=6)
 
 print("\n" + "="*60)
 print("ALL TESTS COMPLETED!")
+
 print("="*60)
