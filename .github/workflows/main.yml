@@ -24,7 +24,7 @@ jobs:
     
     - name: Run tests with coverage
       run: |
-        pytest 324-Ind/Tests/ --cov=Game --cov-report=xml --cov-report=term
+        pytest Chess_Ind/Tests/ --cov=Game --cov-report=xml --cov-report=term
     
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
