@@ -21,6 +21,20 @@ jobs:
     
     - name: Set PYTHONPATH
       run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+
+    - name: Debug working directory
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Listing files:"
+        ls -la
+        echo ""
+        echo "Looking for Chess_Ind:"
+        if [ -d "Chess_Ind" ]; then
+          echo "Chess_Ind exists, entering it..."
+          cd Chess_Ind
+          echo "Now in: $(pwd)"
+          ls -la
+        fi
     
     - name: Run tests with coverage
       run: |
