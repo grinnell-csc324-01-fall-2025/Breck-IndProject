@@ -1,5 +1,5 @@
-from Game.chess_engine import ChessEngine
-from Game.bots import RandomBot
+from 324-Ind.Game.chess_engine import ChessEngine
+from 324-Ind.Game.bots import RandomBot
 
 print("Testing basic bot movement...")
 
@@ -41,5 +41,6 @@ if move:
         print("ERROR: Bot suggested moving to same square!")
 else:
     print("Bot couldn't find a move")
+
 
 print("\n=== Test complete ===")
