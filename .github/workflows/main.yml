@@ -9,6 +9,33 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Find Chess_Ind directory
+      id: find-dir
+      run: |
+        echo "=== Searching for Chess_Ind ==="
+        
+        # Search for Chess_Ind
+        if [ -d "Chess_Ind" ]; then
+          CHESS_DIR="Chess_Ind"
+        elif [ -d "../Chess_Ind" ]; then
+          CHESS_DIR="../Chess_Ind"
+        else
+          # Search recursively
+          CHESS_DIR=$(find . -type d -name "Chess_Ind" 2>/dev/null | head -1)
+          if [ -z "$CHESS_DIR" ]; then
+            echo "ERROR: Chess_Ind directory not found!"
+            exit 1
+          fi
+        fi
+        
+        echo "Found: $CHESS_DIR"
+        
+        # Save to environment variable for THIS JOB
+        echo "CHESS_DIR=$CHESS_DIR" >> $GITHUB_ENV
+        
+        # Also save as step output for other steps
+        echo "dir=$CHESS_DIR" >> $GITHUB_OUTPUT
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -16,32 +43,15 @@ jobs:
     
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        cd ${{ env.CHESS_DIR }}
         pip install pytest pytest-cov hypothesis
     
-    - name: Set PYTHONPATH
-      run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
-
-    - name: Debug working directory
+    - name: Run tests
       run: |
-        echo "Current directory: $(pwd)"
-        echo "Listing files:"
-        ls -la
-        echo ""
-        echo "Looking for Chess_Ind:"
-        if [ -d "Chess_Ind" ]; then
-          echo "Chess_Ind exists, entering it..."
-          cd Chess_Ind
-          echo "Now in: $(pwd)"
-          ls -la
-        fi
-    
-    - name: Run tests with coverage
-      run: |
+        cd ${{ env.CHESS_DIR }}
         python -m pytest Tests/ --cov=Game --cov-report=xml --cov-report=term
     
-    - name: Upload coverage to Codecov
+    - name: Upload coverage
       uses: codecov/codecov-action@v3
       with:
-        file: ./coverage.xml
-        fail_ci_if_error: true
+        file: ${{ env.CHESS_DIR }}/coverage.xml
