@@ -1,5 +1,5 @@
-from Chess_Ind.Game.chess_engine import ChessEngine
-from Chess_Ind.Game.bots import RandomBot, CaptureBot, CenterControlBot
+from Game.chess_engine import ChessEngine
+from Game.bots import RandomBot, CaptureBot, CenterControlBot
 
 class ChessGame:
     def __init__(self, white_bot=None, black_bot=None):
@@ -55,4 +55,5 @@ class ChessGame:
                 break
         
         print(f"\n=== Game ended after {min(turn + 1, max_turns)} turns ===")
+
         self.engine.print_board()
