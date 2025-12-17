@@ -1,6 +1,6 @@
 import random
 from typing import Tuple, Optional
-from Chess_Ind.Game.chess_engine import ChessEngine
+from Game.chess_engine import ChessEngine
 
 class RandomBot:
     """Bot 1: Makes random legal moves"""
@@ -156,4 +156,5 @@ class CenterControlBot(RandomBot):
         if from_sq == to_sq:
             return super().get_move(engine)
         
+
         return from_sq, to_sq
