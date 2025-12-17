@@ -1,5 +1,5 @@
-from Chess_Ind.Game.chess_engine import ChessEngine
-from Chess_Ind.Game.bots import RandomBot, CaptureBot, CenterControlBot
+from Game.chess_engine import ChessEngine
+from Game.bots import RandomBot, CaptureBot, CenterControlBot
 
 def test_bot_colors():
     """Verify bots move correct color pieces"""
@@ -85,4 +85,5 @@ def test_no_same_square_moves():
 
 if __name__ == "__main__":
     test_bot_colors()
+
     test_no_same_square_moves()
