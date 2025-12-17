@@ -5,36 +5,56 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      # Will be set by the find step
+      PROJECT_DIR: ""
     
     steps:
     - uses: actions/checkout@v3
     
-    - name: Find Chess_Ind directory
-      id: find-dir
+    - name: Find project directory
+      id: find-project
       run: |
-        echo "=== Searching for Chess_Ind ==="
+        echo "=== Directory Search ==="
+        echo "Starting in: $(pwd)"
         
-        # Search for Chess_Ind
-        if [ -d "Chess_Ind" ]; then
-          CHESS_DIR="Chess_Ind"
-        elif [ -d "../Chess_Ind" ]; then
-          CHESS_DIR="../Chess_Ind"
-        else
-          # Search recursively
-          CHESS_DIR=$(find . -type d -name "Chess_Ind" 2>/dev/null | head -1)
-          if [ -z "$CHESS_DIR" ]; then
-            echo "ERROR: Chess_Ind directory not found!"
+        # Array of possible locations
+        possible_paths=(
+          "Chess_Ind"
+          "../Chess_Ind"
+          "./Chess_Ind"
+          "$(pwd)/Chess_Ind"
+        )
+        
+        # Check each location
+        for path in "${possible_paths[@]}"; do
+          if [ -d "$path" ]; then
+            echo "✓ Found at: $path"
+            REAL_PATH=$(realpath "$path")
+            echo "PROJECT_DIR=$REAL_PATH" >> $GITHUB_ENV
+            echo "dir=$REAL_PATH" >> $GITHUB_OUTPUT
+            break
+          fi
+        done
+        
+        # If still not found, search recursively
+        if [ -z "$REAL_PATH" ]; then
+          echo "Searching recursively..."
+          FOUND=$(find . -type d -name "Chess_Ind" 2>/dev/null | head -1)
+          if [ -n "$FOUND" ]; then
+            REAL_PATH=$(realpath "$FOUND")
+            echo "✓ Found recursively at: $REAL_PATH"
+            echo "PROJECT_DIR=$REAL_PATH" >> $GITHUB_ENV
+            echo "dir=$REAL_PATH" >> $GITHUB_OUTPUT
+          else
+            echo "✗ ERROR: Chess_Ind not found!"
+            echo "Current directory contents:"
+            ls -la
             exit 1
           fi
         fi
         
-        echo "Found: $CHESS_DIR"
-        
-        # Save to environment variable for THIS JOB
-        echo "CHESS_DIR=$CHESS_DIR" >> $GITHUB_ENV
-        
-        # Also save as step output for other steps
-        echo "dir=$CHESS_DIR" >> $GITHUB_OUTPUT
+        echo "Project directory set to: $REAL_PATH"
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -43,15 +63,18 @@ jobs:
     
     - name: Install dependencies
       run: |
-        cd ${{ env.CHESS_DIR }}
+        echo "Changing to: ${{ env.PROJECT_DIR }}"
+        cd "${{ env.PROJECT_DIR }}"
+        echo "Now in: $(pwd)"
         pip install pytest pytest-cov hypothesis
     
     - name: Run tests
       run: |
-        cd ${{ env.CHESS_DIR }}
+        cd "${{ env.PROJECT_DIR }}"
+        echo "Running tests from: $(pwd)"
         python -m pytest Tests/ --cov=Game --cov-report=xml --cov-report=term
     
     - name: Upload coverage
       uses: codecov/codecov-action@v3
       with:
-        file: ${{ env.CHESS_DIR }}/coverage.xml
+        file: ${{ env.PROJECT_DIR }}/coverage.xml
