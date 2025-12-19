@@ -1,41 +1,22 @@
-Research Questions:
-  1. Does natural language explanation of chess moves lead to a better understanding
-     and move quality improvement compared to traditional numerical engine evaluations?
-  2. Does dynamically adjusting explanation complexity based on demonstrated user understanding 
-     improve learning efficiency?
-  3. Does having a ladder system of AI skill level cause more improvements vs a dynamically changing level of skill?
+Start:
+  Does this setup of a chess board look familiar?
+    Yes it does, I know what a chess board looks like.
 
-Experiment Questions:
-  1.
-    1. Recall Question: "In the position around move 4, it suggested this movement. Can you explain in your own words why that move was good?"
+  How do you feel about AI helping you in chess?
+    I think it could be helpful given the data.
 
-    2. Application Question: "Looking at this new position, what would be a good move and why?"
-    3. Pattern Recognition: "Did you notice any recurring themes or ideas in the positions we looked at today?"
-    4. Confidence Rating: "On a scale of 1-7, how confident are you that you understood the AI's explanations?"
-    5. Confusion Check: "Was there any point where the AI's explanation confused you or seemed unclear?"
-    6. Actionability: "How easy was it to apply the AI's advice to your next moves?"
-    7. Learning Perception: "Do you feel like you learned something about chess from this session?" 
-    8. Explanation Quality: "Did the AI explain the 'why' behind moves, or just tell you what to do?"
-    9. Preference: "Would you want to use this style of AI coaching in your regular chess practice?"
+  Are you able to take critical feedback or do you prefer more lighthearted?
+    I like both but in chess, I don't want to be told I'm doing bad, more corrected and guided to the better move.
 
-  2.
-    1. Difficulty Perception: "On a scale of 1-7, how would you rate the difficulty level of the AI's explanations?" 
-    2. Cognitive Load: "How mentally demanding was it to understand and process the AI's feedback?"
-    3. Engagement Check: "Did you ever feel bored or talked down to during the explanations?"
-    4. Overwhelm Check: "Did you ever feel lost or overwhelmed by the complexity of what the AI was explaining?"
-    5. Learning Efficiency: "How much do you feel you learned in this short session?"
-    6. Concept Application: "Show me in this position [present test position] - can you apply something you learned today?"
-    7. Personalization Awareness (for adaptive group): "Did you notice the AI adjusting its explanations as we went along?"
-    8. Appropriateness: "Did the explanations feel like they were at the right level for your chess understanding?"
-    9. Frustration Check: "Rate your frustration level during this session."
-  3. 
-    1. Challenge Rating: "How challenging was the AI opponent?"
-    2. Progress Awareness: "Did you feel like you were improving or making progress during the session?"
-    3. Motivation: "How motivated did you feel to keep playing and improving?"
-    4. Level Understanding (Ladder only): "What level did you reach? How did that make you feel?"
-    5. Adjustment Awareness (Dynamic only): "Did you notice the AI's playing strength changing?"
-    6. Goal Clarity: "Did you have a clear sense of what you were working toward?"
-    7. Satisfaction: "How satisfied are you with your performance in this session?"
-    8. Fairness Perception: "Did the AI's skill level feel fair and appropriate for your ability?"
-    9. Preference: "Would you prefer to see explicit levels (Bronze, Silver, Gold) or have the AI invisibly adjust to you?"
-    10. Engagement Driver: "What motivated you more during the games - trying to beat the level, or just playing good chess?"
+  Make a few moves and I will be giving you a feedback card, tell me what you think.
+    The good move card made me feel like I'm on the right path which is nice but it doesn't do anything else.
+    I like how it says I did good and gives advice for my next move.
+    The bad feedback was kind of funny, I would prefer to know why its bad.
+
+  How do you feel about pre or post move advice?
+    I like post because it allows me to make the decision and still learn while pre feels more like I'm getting told what to do and I'm not getting much better at chess itself.
+
+
+My protoype imgages:
+![thumbnail_image0](https://github.com/user-attachments/assets/37c83c91-f0ae-42c2-9a5e-6a8966c36f5c)
+![thumbnail_image1](https://github.com/user-attachments/assets/57fcef77-afe5-448e-bbb6-b97f6d177b78)
